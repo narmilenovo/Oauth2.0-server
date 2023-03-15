@@ -15,7 +15,7 @@ create table if not exists  oauth_client_details (
                                                      autoapprove varchar(255) default null,
                                                      primary key (client_id)
 )  ;
-
+/*
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 create sequence permission_seq;
 
@@ -78,7 +78,7 @@ create table if not exists role_user (
 
 create index role_id on role_user (role_id);
 create index user_id on role_user (user_id);
-
+*/
 -- token store
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 create table if not exists oauth_client_token (

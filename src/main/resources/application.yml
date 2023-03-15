@@ -1,14 +1,11 @@
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/learning
+    url: jdbc:postgresql://localhost:5432/micro
     username: postgres
     password: imu123
     driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+
   jpa:
     hibernate:
       naming:
@@ -18,4 +15,13 @@ spring:
     generate-ddl: true
     properties:
       hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
         format_sql: true
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
+server:
+  port: 9191
