@@ -1,0 +1,28 @@
+INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_uri, scope, access_token_validity, refresh_token_validity, resource_ids, authorized_grant_types, additional_information) VALUES ('demo', '{bcrypt}$2a$10$.7ZoieaQYCD6yIMvgZHjUOFL.RA1cENAkcxA.rTIwdJl.ugylNqb6', 'http://localhost:9002/login', 'READ,WRITE', '3600', '10000', 'inventory,payment', 'authorization_code,password,refresh_token,implicit', '{}');
+
+INSERT INTO permissions (id,NAME) VALUES
+                                  (1,'create_profile'),
+                                  (2,'read_profile'),
+                                  (3,'update_profile'),
+                                  (4,'delete_profile');
+
+INSERT INTO roles (id,NAME) VALUES
+                            (1,'ROLE_admin'),(2,'ROLE_editor'),(3,'ROLE_operator');
+
+INSERT INTO roles_permissions (PERMISSION_ID, ROLE_ID) VALUES
+                                                         (1,1), /*create-> admin */
+                                                         (2,1), /* read admin */
+                                                         (3,1), /* update admin */
+                                                         (4,1), /* delete admin */
+                                                         (2,2),  /* read editor */
+                                                         (3,2),  /* update editor */
+                                                         (2,3);  /* read operator */
+insert into users (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('1', 'imu','{bcrypt}$2a$10$PxvgvkOxkwtX1AsptpGbjOkrfImgNZ1AZVco5CwU69suvhjgVza7.', 'imu@gmail.com', '1', '1', '1', '1');
+insert into  users (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('2', 'nemo', '{bcrypt}$2a$10$5L3QIDeQL1.e.3BTp7AoguNrNxmkchs/ommEaH4m9ntP.Puf5cA.W','nemo@gmail.com', '1', '1', '1', '1');
+insert into  users (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('3', 'narmi', '{bcrypt}$2a$10$5L3QIDeQL1.e.3BTp7AoguNrNxmkchs/ommEaH4m9ntP.Puf5cA.W','narmi@gmail.com', '1', '1', '1', '1');
+
+INSERT INTO users_roles (ROLE_ID, USER_ID)
+VALUES
+    (1, 1) /* imu-admin */,
+    (2, 2) /* nemo-operatorr */ ,
+    (3, 3) /* narmi-operatorr */ ;
